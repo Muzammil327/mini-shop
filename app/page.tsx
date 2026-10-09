@@ -4,6 +4,7 @@ export default function Home() {
   let cart: CartItem[] = [];
   cart = addItem(cart, { name: "Pen", price: 10, qty: 2 });
   cart = addItem(cart, { name: "Book", price: 50, qty: 1 });
+  cart = addItem(cart, { name: "Pen", price: 10, qty: 1 });
 
   return (
     <main className="mx-auto flex w-full max-w-md flex-col gap-6 p-8">

@@ -5,7 +5,13 @@ export interface CartItem {
 }
 
 export function addItem(cart: CartItem[], item: CartItem): CartItem[] {
-  return [...cart, item];
+  const existing = cart.find((cartItem) => cartItem.name === item.name);
+  if (!existing) {
+    return [...cart, item];
+  }
+  return cart.map((cartItem) =>
+    cartItem.name === item.name ? { ...cartItem, ...item } : cartItem,
+  );
 }
 
 export function removeItem(cart: CartItem[], name: string): CartItem[] {
@@ -15,7 +21,7 @@ export function removeItem(cart: CartItem[], name: string): CartItem[] {
 export function total(cart: CartItem[]): number {
   let sum = 0;
   for (const item of cart) {
-    sum + item.price * item.qty;
+    sum += item.price * item.qty;
   }
   return sum;
 }
