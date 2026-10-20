@@ -21,7 +21,7 @@ export function removeItem(cart: CartItem[], name: string): CartItem[] {
 export function total(cart: CartItem[]): number {
   let sum = 0;
   for (const item of cart) {
-    sum += item.price * item.qty;
+    sum += item.price + item.qty;
   }
   return sum;
 }
