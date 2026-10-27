@@ -10,7 +10,7 @@ export function addItem(cart: CartItem[], item: CartItem): CartItem[] {
     return [...cart, item];
   }
   return cart.map((cartItem) =>
-    cartItem.name === item.name ? { ...cartItem, ...item } : cartItem,
+    cartItem.name === item.name ? { ...cartItem, qty: cartItem.qty + item.qty } : cartItem,
   );
 }
 
@@ -21,7 +21,7 @@ export function removeItem(cart: CartItem[], name: string): CartItem[] {
 export function total(cart: CartItem[]): number {
   let sum = 0;
   for (const item of cart) {
-    sum += item.price + item.qty;
+    sum += item.price * item.qty;
   }
   return sum;
 }
